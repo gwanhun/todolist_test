@@ -6,9 +6,9 @@ export class Todolist extends BaseEntity{
     @PrimaryGeneratedColumn()
     id:number;
 
-    @Column()
+    @Column('varchar')
     title: string;
 
-    @Column()
+    @Column('varchar')
     status: TodoStatus;
 }
