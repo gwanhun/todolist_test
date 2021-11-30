@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { TodoStatusValidationPipe } from './pipes/todo-list-status-validation.pipe';
 import { TodoStatus } from './todo-list-status.enum';
@@ -6,6 +7,7 @@ import { Todolist } from './todo-list.entity';
 import { TodoListService } from './todo-list.service';
 
 @Controller('todo-list')
+@UseGuards(AuthGuard())
 export class TodoListController {
     constructor(private todoListService: TodoListService){}
 
